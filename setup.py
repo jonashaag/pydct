@@ -16,5 +16,16 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    extras_require={"test": ["pytest", "librosa", "scipy", "numpy", "tensorflow"]},
+    extras_require={
+        "test": [
+            "pytest",
+            "librosa",
+            "scipy",
+            "numpy",
+            "tensorflow",
+            "black",
+            "isort",
+            "flake8",
+        ]
+    },
 )

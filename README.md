@@ -9,9 +9,11 @@ This similar to `librosa.core.{stft,istft}` and `tf.signal.{stft,inverse_stft}` 
 # Short-Time DCT
 spectrogram = pydct.scipy.sdct(example_audio, frame_length=1024, frame_step=256)
 spectrogram_tf = pydct.tf.sdct_tf(example_audio, frame_length=1024, frame_step=256)
+
 # Inverse Short-Time DCT
 example_audio_2 = pydct.scipy.isdct(spectrogram, frame_step=256)
 example_audio_2_tf = pydct.tf.isdct_tf(spectrogram_tf, frame_step=256)
+
 # Plot with librosa
 librosa.display.specshow(
     librosa.core.amplitude_to_db(spectrogram),
