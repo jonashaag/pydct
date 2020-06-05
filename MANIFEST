@@ -1,0 +1,4 @@
+pydct/*.py
+setup.py
+tests.py
+README.rst

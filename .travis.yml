@@ -1,0 +1,12 @@
+sudo: false
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+install: pip install -e .[test]
+script:
+  - py.test tests.py
+  - black --check *.py pydct/**.py
+  - isort --check *.py pydct/**.py
+  - flake8 --ignore 'E501,E203,W503' *.py pydct/**.py
