@@ -27,7 +27,7 @@ def sdct(signal, frame_length, frame_step, window="hamming"):
             signal.dtype
         )
         framed = framed * window[:, np.newaxis]
-    return scipy.fft.dct(framed, norm="ortho")
+    return scipy.fft.dct(framed, norm="ortho", axis=-2)
 
 
 def isdct(dct, *, frame_step, frame_length=None, window="hamming"):
@@ -55,7 +55,7 @@ def isdct(dct, *, frame_step, frame_length=None, window="hamming"):
     """
     frame_length2, n_frames = dct.shape
     assert frame_length in {None, frame_length2}
-    signal = overlap_add(scipy.fft.idct(dct, norm="ortho"), frame_step)
+    signal = overlap_add(scipy.fft.idct(dct, norm="ortho", axis=-2), frame_step)
     if window is not None:
         window = librosa.filters.get_window(window, frame_length2, fftbins=True).astype(
             dct.dtype

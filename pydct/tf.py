@@ -23,7 +23,7 @@ def sdct_tf(signals, frame_length, frame_step, window_fn=tf.signal.hamming_windo
     if window_fn is not None:
         window = window_fn(frame_length, dtype=framed.dtype)
         framed = framed * window[tf.newaxis, :]
-    return tf.signal.dct(framed, norm="ortho")
+    return tf.signal.dct(framed, norm="ortho", axis=-1)
 
 
 def isdct_tf(
@@ -53,7 +53,7 @@ def isdct_tf(
     """
     *_, n_frames, frame_length2 = dcts.shape
     assert frame_length in {None, frame_length2}
-    signals = tf.signal.overlap_and_add(tf.signal.idct(dcts, norm="ortho"), frame_step)
+    signals = tf.signal.overlap_and_add(tf.signal.idct(dcts, norm="ortho", axis=-1), frame_step)
     if window_fn is not None:
         window = window_fn(frame_length2, dtype=signals.dtype)
         window_frames = tf.tile(window[tf.newaxis, :], (n_frames, 1))
