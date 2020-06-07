@@ -5,6 +5,8 @@ This similar to `librosa.core.{stft,istft}` and `tf.signal.{stft,inverse_stft}` 
 
 ## Usage
 
+See also: [Example notebook](./example.ipynb).
+
 ```py
 # Short-Time DCT
 spectrogram = pydct.scipy.sdct(example_audio, frame_length=1024, frame_step=256)
